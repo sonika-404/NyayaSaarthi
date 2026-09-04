@@ -1,33 +1,29 @@
 # Dependency directories
 node_modules/
-jspm_packages/
 
-# Environment and secret files
+# Environment variables & API keys (Never commit secrets)
 .env
-.env.local
-.env.*.local
-.env.production
-.env.development
+.env*.local
 
 # Debug and runtime logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-logs/
 *.log
 
 # Operating System files
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# IDE and Editor configurations
+# IDE & Editor configurations
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# Temporary directories
+# Temporary folders
 .cache/
 .tmp/
 tmp/
