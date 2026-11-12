@@ -26,4 +26,5 @@ desktop.ini
 # Temporary folders
 .cache/
 .tmp/
-tmp/
+tmp/*.tar.gz
+*.tar.gz
