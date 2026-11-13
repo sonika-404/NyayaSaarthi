@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nyayasaarthi
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nyayasaarthi
+  template:
+    metadata:
+      labels:
+        app: nyayasaarthi
+    spec:
+      containers:
+      - name: api
+        image: nyayasaarthi:1.0
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3000
+        envFrom:
+        - configMapRef:
+            name: nyaya-config
+        - secretRef:
+            name: nyaya-secret
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 5
