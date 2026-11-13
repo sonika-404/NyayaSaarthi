@@ -1,0 +1,13 @@
+[Unit]
+Description=Nyaya Saarthi
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/nyayasaarthi
+ExecStart=/usr/bin/node server.js
+Environment=PORT={{ app_port }}
+Environment=GEMINI_API_KEY={{ api_key }}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

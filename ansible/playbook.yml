@@ -1,0 +1,8 @@
+- hosts: appservers
+  become: yes
+  vars:
+    app_port: 3001
+    api_key: dummy-key
+  roles:
+    - nyayasaarthi
+    

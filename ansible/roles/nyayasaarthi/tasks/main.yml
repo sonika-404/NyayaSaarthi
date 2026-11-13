@@ -1,0 +1,34 @@
+- name: Add NodeSource repo
+  shell: curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+  args:
+    creates: /etc/apt/sources.list.d/nodesource.list
+
+- name: Install Node.js
+  apt:
+    name: nodejs
+    state: present
+    update_cache: yes
+
+- name: Copy application files
+  copy:
+    src: app/
+    dest: /opt/nyayasaarthi/
+  notify: Restart app
+
+- name: Install dependencies
+  command: npm ci --omit=dev
+  args:
+    chdir: /opt/nyayasaarthi
+
+- name: Create systemd service
+  template:
+    src: nyayasaarthi.service.j2
+    dest: /etc/systemd/system/nyayasaarthi.service
+  notify: Restart app
+
+- name: Start service
+  systemd:
+    name: nyayasaarthi
+    state: started
+    enabled: yes
+    daemon_reload: yes
