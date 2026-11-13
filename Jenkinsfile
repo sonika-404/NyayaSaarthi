@@ -13,3 +13,4 @@ pipeline {
     stage('Version') { steps { sh 'mv nyaya-saarthi-release.tar.gz nyaya-saarthi-${BUILD_NUMBER}.tar.gz' } }
     stage('Archive') { steps { archiveArtifacts artifacts: '*.tar.gz', fingerprint: true } }
   }
+}
