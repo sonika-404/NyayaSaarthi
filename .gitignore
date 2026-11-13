@@ -28,3 +28,4 @@ desktop.ini
 .tmp/
 tmp/*.tar.gz
 *.tar.gz
+*.tar.gz
