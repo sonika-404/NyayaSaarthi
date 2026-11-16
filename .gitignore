@@ -29,3 +29,5 @@ desktop.ini
 tmp/*.tar.gz
 *.tar.gz
 *.tar.gz
+node/
+target/
